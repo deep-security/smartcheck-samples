@@ -190,7 +190,13 @@ class Smartcheck(_SlightlyImprovedSession):
             # We use the link in the `Link: rel='next'` header as it's easier
             # than building a URL based on the cursor in the body. If there is
             # no header then there's no more data.
-            if not 'next' in response.links:
+            if kwargs.get('params'):
+                limit = kwargs['params']['limit']
+
+                if limit == 1:
+                    break
+
+            if 'next' not in response.links:
                 break
 
             # Extract the URL from the `Link: rel='next'` header.
