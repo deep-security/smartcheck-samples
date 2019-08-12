@@ -207,10 +207,6 @@ def main():
                         f'{name:{15}} {vector:{6}} {severity:{10}} {cve}'
                     )
 
-            # Only asking for one scan doesn't mean that the iterator won't happily
-            # ask for the next one, so stop the loop here.
-            break
-
 
 if __name__ == '__main__':
     main()
